@@ -1,9 +1,9 @@
-create table if not exists url (
-    id serial,
-    original_url varchar not null,
-    short_path char(10) not null unique,
-    view_times integer not null default 0,
-    created_at timestamp not null default current_timestamp,
-    expired_at timestamp not null,
-    primary key(id)
+CREATE TABLE IF NOT EXISTS url (
+    id SERIAL,
+    original_url VARCHAR NOT NULL,
+    short_path CHAR(10) NOT NULL UNIQUE,
+    view_times INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP NOT NULL DEFAULT current_timestamp,
+    expired_at TIMESTAMP NOT NULL,
+    PRIMARY KEY(id)
 );
