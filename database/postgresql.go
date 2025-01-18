@@ -34,7 +34,7 @@ func (p *Postgresql) CreateUrl(ctx context.Context, requestData models.UrlApiPOS
 	defer cancel1()
 
 	for i := 0; i < 5; i++ {
-		shortPath = utils.GenerateShortPath()
+		shortPath = utils.GenerateShortPath(10)
 
 		err := p.db.QueryRowContext(ctx1, sqlIsShortPathDuplicate, shortPath).Scan(&isDuplicate)
 		if err != nil {

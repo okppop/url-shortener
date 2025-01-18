@@ -43,6 +43,6 @@ func TestIsURL(t *testing.T) {
 
 func TestGenerateShortPath(t *testing.T) {
 	for i := 0; i < 1000; i++ {
-		t.Log(GenerateShortPath())
+		t.Log(GenerateShortPath(10))
 	}
 }

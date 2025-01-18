@@ -32,9 +32,9 @@ func IsURL(s string) error {
 
 const letters string = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
-func GenerateShortPath() string {
+func GenerateShortPath(length int) string {
 	var shortPath []byte
-	for i := 0; i < 10; i++ {
+	for i := 0; i < length; i++ {
 		shortPath = append(shortPath, letters[rand.IntN(len(letters))])
 	}
 
