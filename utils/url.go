@@ -3,7 +3,10 @@ package utils
 import (
 	"errors"
 	"math/rand/v2"
+	"net/http"
 	"net/url"
+
+	"github.com/labstack/gommon/log"
 )
 
 func IsURL(s string) error {
@@ -36,4 +39,11 @@ func GenerateShortPath() string {
 	}
 
 	return string(shortPath)
+}
+
+func EncodeLogJ(r *http.Request, message string) log.JSON {
+	return log.JSON{
+		"at":  r.Method + " " + r.URL.Path,
+		"msg": message,
+	}
 }

@@ -18,24 +18,28 @@ func (h *ApiUrlHandler) POST(c echo.Context) error {
 
 	err := c.Bind(&requestData)
 	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+		c.Logger().Errorj(utils.EncodeLogJ(c.Request(), err.Error()))
+		return echo.ErrBadRequest
 	}
 
 	// verify data.OriginalUrl
 	err = utils.IsURL(requestData.OriginalUrl)
 	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+		c.Logger().Warnj(utils.EncodeLogJ(c.Request(), err.Error()))
+		return echo.ErrBadRequest
 	}
 
 	// verify data.DurationDays
 	if requestData.ExpireHours == 0 {
-		return echo.NewHTTPError(http.StatusBadRequest, "expire time can't be zero")
+		c.Logger().Warnj(utils.EncodeLogJ(c.Request(), "expired_hours can't be zero"))
+		return echo.ErrBadRequest
 	}
 
-	var responseData models.UrlApiPOSTResponse
-	responseData, err = h.db.CreateUrl(requestData)
+	var responseData *models.UrlApiPOSTResponse
+	responseData, err = h.db.CreateUrl(c.Request().Context(), requestData)
 	if err != nil {
-		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
+		c.Logger().Errorj(utils.EncodeLogJ(c.Request(), err.Error()))
+		return echo.ErrInternalServerError
 	}
 
 	return c.JSON(http.StatusCreated, responseData)
