@@ -1,0 +1,17 @@
+http_server:
+  address: "127.0.0.1"
+  port: 8080
+
+postgresql:
+  host: "127.0.0.1"
+  port: 5432
+  user: "username"
+  password: "password"
+  database: "database"
+  ssl_mode: "require"
+
+redis:
+  host: "127.0.0.1"
+  port: 6379
+  password: "password"
+  database: 0
