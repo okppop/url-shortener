@@ -68,7 +68,7 @@ func (a *App) Init(configFilePath string) error {
 	a.e.POST("/api/url", a.url.CreateURL)
 	a.e.GET("/:short_path", a.url.GetURL)
 	a.e.HideBanner = true
-	a.e.Logger.SetLevel(log.INFO)
+	a.e.Logger.SetLevel(log.WARN)
 
 	return nil
 }

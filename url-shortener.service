@@ -4,7 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/url/url-shortener
+WorkingDirectory=/usr/local/url-shortener
+ExecStart=/usr/local/url-shortener/url-shortener
 Restart=on-failure
 
 [Install]

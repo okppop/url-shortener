@@ -15,7 +15,7 @@ Environment requirement:
 - Linux environment
     - systemd(optional)
     - root permission
-- Go Development environment
+- Go development environment
 - Postgresql
 - Redis
 
@@ -32,13 +32,13 @@ go mod tidy
 
 go build .
 ```
-executable file "url-shortener" was created.
+Executable file "url-shortener" was created.
 
 #### Edit config file:
 ```
 cp config.yaml.example config.yaml
 ```
-then, use any editor edit "config.yaml".
+Then, use any editor edit "config.yaml".
 
 #### Import database table:
 
@@ -49,15 +49,15 @@ psql -h host -U username database < schema.sql
 
 #### Deployment:
 ```
-sudo mkdir -p /usr/local/url
-sudo mv url-shortener config.yaml /usr/local/url/
-sudo -i cp url.service /etc/systemd/system/
+sudo mkdir -p /usr/local/url-shortener
+sudo mv url-shortener config.yaml /usr/local/url-shortener/
+sudo cp url-shortener.service /etc/systemd/system/
 sudo systemctl daemon-reload
 ```
 
 #### Start service:
 ```
-sudo systemctl start url.service
+sudo systemctl start url-shortener.service
 ```
 
 ### Container Deployment
