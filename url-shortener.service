@@ -1,0 +1,11 @@
+[Unit]
+Description=url-shortener service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/url/url-shortener
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
