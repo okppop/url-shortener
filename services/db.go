@@ -106,7 +106,7 @@ func (s *Service) GetURL(ctx context.Context, shortPath string) (string, error) 
 			return responseData.OriginalURL, nil
 		}
 
-		if responseData.ExpiredAt.Before(time.Now()) {
+		if responseData.ExpiredAt.After(time.Now()) {
 			return responseData.OriginalURL, nil
 		}
 
