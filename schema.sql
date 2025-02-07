@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS url (
+    id SERIAL,
+    original_url VARCHAR NOT NULL,
+    short_path CHAR(10) NOT NULL UNIQUE,
+    view_times INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    expired_at TIMESTAMP,
+    PRIMARY KEY(id)
+);
