@@ -39,7 +39,7 @@ cp config.yaml.example config.yaml
 ```
 Then, use any editor edit "config.yaml".
 
-#### Import database table:
+#### Import database schema:
 
 Change host, username, database base your setting.
 ```
@@ -74,6 +74,13 @@ Environment requirement:
 git clone https://github.com/okppop/url-shortener.git
 
 cd url-shortener/
+```
+
+#### Import database schema:
+
+Change host, username, database base your setting.
+```
+psql -h host -U username database < schema.sql
 ```
 
 #### Compile:
