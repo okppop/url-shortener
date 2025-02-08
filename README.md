@@ -32,7 +32,6 @@ go mod tidy
 
 go build .
 ```
-Executable file "url-shortener" was created.
 
 #### Edit config file:
 ```
@@ -62,4 +61,42 @@ sudo systemctl start url-shortener.service
 
 ### Container Deployment
 
-Add later.
+Environment requirement:
+
+- Linux environment
+- Docker or other container manager
+- Go development environment
+- Postgresql
+- Redis
+
+#### Clone repository:
+```
+git clone https://github.com/okppop/url-shortener.git
+
+cd url-shortener/
+```
+
+#### Compile:
+```
+go mod tidy
+
+CGO_ENABLED=0 go build .
+```
+
+#### Edit config file:
+```
+cp config.yaml.example config.yaml
+```
+Then, use any editor edit "config.yaml".
+
+#### Build container image:
+
+```
+docker build . -t url-shortener:1.0
+```
+
+#### Run container:
+
+```
+docker run -d --network host --name url url-shortener:1.0
+```
