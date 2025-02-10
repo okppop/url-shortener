@@ -4,6 +4,8 @@ url-shortener is a short URL service.
 Using postgresql, redis, offer fast user experience.
 
 ## Deployment
+> Only Back-end
+
 There are two ways to deploy this project:
 
 - Compile deployment
