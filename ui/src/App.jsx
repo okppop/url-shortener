@@ -4,17 +4,23 @@ import {
 } from "@mui/material"
 import Bar from './componets/Bar'
 import Info from "./componets/Info"
+import { useState } from "react"
 
-const theme = createTheme({
-	palette: {
-		mode: "light",
-	}
-})
 
 function App() {
+	const [mode, setMode] = useState("dark")
+	const theme = createTheme({
+		palette: {
+			mode: mode,
+		}
+	})
+	const changeMode = () => {
+		setMode(mode === "dark" ? "light" : "dark")
+	}
+
 	return (
 		<ThemeProvider theme={theme}>
-			<Bar />
+			<Bar mode={mode} changeMode={changeMode} />
 			<Info />
 		</ThemeProvider>
 	)
