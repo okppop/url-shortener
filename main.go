@@ -4,6 +4,11 @@ import "github.com/okppop/url-shortener/app"
 
 func main() {
 	a := &app.App{}
-	a.Init("./config.yaml")
+
+	err := a.Init("./config.yaml")
+	if err != nil {
+		panic(err)
+	}
+
 	a.Start()
 }
